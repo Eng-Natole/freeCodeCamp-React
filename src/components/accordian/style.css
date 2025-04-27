@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5; /* optional: light background to make accordion pop */
+}
+
+.accordian {
+  width: 500px;
+}
+
+.item {
+  background: #614101;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.title {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.content {
+  background: #8b5d02;
+  color: #fff;
+  padding: 15px 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Optional smooth animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

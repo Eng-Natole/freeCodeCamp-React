@@ -1,0 +1,52 @@
+/* General body and container setup */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  color: white;
+}
+
+/* Style for each button */
+button {
+  background-color: #2f80ed; /* Blue button background */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: #1a60b4; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly grow the button */
+}
+
+/* Active effect (when the button is clicked) */
+button:active {
+  background-color: #155a8a; /* Even darker blue on active */
+  transform: scale(0.98); /* Slightly shrink the button */
+}
+
+/* Focus effect (when button is in focus) */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(47, 128, 237, 0.6); /* Light glow on focus */
+}
+
+/* Button container for spacing */
+button + button {
+  margin-top: 10px;
+}
+
+/* Styling for the color code display */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}

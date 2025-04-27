@@ -11,7 +11,7 @@ function App() {
       {/*RandomColor component*/}
       <RandomColor />
       {/*star component*/}
-      <Star />
+      <Star noOfStars={5} />
     </div>
   );
 }

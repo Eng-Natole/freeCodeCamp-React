@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 export default function ImageSlider({ url, limit = 5, page = 1 }) {
   const [images, setImages] = useState([]);
@@ -26,17 +26,42 @@ export default function ImageSlider({ url, limit = 5, page = 1 }) {
     if (url !== "") {
       fetchImages(url);
     }
-  }, [url, page, limit]); // optional: add page and limit too if they might change
+  }, [url, page, limit]);
 
   console.log(images);
 
   if (loading) {
-    return <div>Loading data! please wait</div>;
+    return <div>Loading data! Please wait...</div>;
   }
 
   if (errorMsg !== null) {
-    return <div>Error Occurred! {errorMsg}</div>;
+    return <div>Error occurred! {errorMsg}</div>;
   }
 
-  return <div className="container"></div>;
+  return (
+    <div className="container">
+      <BsArrowLeftCircleFill className="arrow arrow-left" />
+
+      {images && images.length
+        ? images.map((imageItem) => (
+            <img
+              src={imageItem.download_url}
+              alt=""
+              key={imageItem.id}
+              className="current-image"
+            />
+          ))
+        : null}
+
+      <BsArrowRightCircleFill className="arrow arrow-right" />
+
+      <span className="circle-indicators">
+        {images && images.length
+          ? images.map((_, index) => (
+              <button key={index} className="current-indicator"></button>
+            ))
+          : null}
+      </span>
+    </div>
+  );
 }

@@ -56,3 +56,7 @@
 .button-container button:hover {
   background: #ddd;
 }
+.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}

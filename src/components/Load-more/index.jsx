@@ -5,26 +5,33 @@ const LoadMore = () => {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
+  const [disable, setDisable] = useState(false); // Correct state variable
 
   async function fetchproducts() {
-    setLoading(true); // ✅ start loading
+    setLoading(true);
     try {
       const response = await fetch(
         `https://dummyjson.com/products?limit=20&skip=${count * 20}`
       );
       const result = await response.json();
       if (result && result.products && result.products.length) {
-        setProducts((prev) => [...prev, ...result.products]); // ✅ append new products
+        setProducts((prev) => [...prev, ...result.products]);
       }
     } catch (error) {
       console.log(error);
     }
-    setLoading(false); // ✅ stop loading (also moved outside try)
+    setLoading(false);
   }
 
   useEffect(() => {
     fetchproducts();
-  }, [count]); // ✅ trigger when count changes
+  }, [count]);
+
+  useEffect(() => {
+    if (products && products.length >= 100) {
+      setDisable(true); // Correct logic
+    }
+  }, [products]);
 
   if (loading && products.length === 0) {
     return <div>loading data! please wait.</div>;
@@ -41,8 +48,12 @@ const LoadMore = () => {
         ))}
       </div>
       <div className="button-container">
-        <button onClick={() => setCount((prev) => prev + 1)} disabled={loading}>
-          {loading ? "Loading..." : "load more products"}
+        <button
+          className={disable ? "inactive" : ""}
+          disabled={loading || disable}
+          onClick={() => setCount((prev) => prev + 1)}
+        >
+          {loading ? "Loading..." : "Load more products"}
         </button>
       </div>
     </div>

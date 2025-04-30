@@ -31,7 +31,7 @@ const LoadMore = () => {
   }
 
   return (
-    <div className="container">
+    <div className="load-more-container">
       <div className="product-container">
         {products.map((item) => (
           <div className="product" key={item.id}>

@@ -1,3 +1,18 @@
 .container {
   background: black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.product-conatiner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.product {
+  padding: 20px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

@@ -7,7 +7,6 @@ const LoadMore = () => {
   const [count, setCount] = useState(0);
 
   async function fetchproducts() {
-    setLoading(true);
     try {
       const response = await fetch(
         `https://dummyjson.com/products?limit=20&skip=${
@@ -15,26 +14,39 @@ const LoadMore = () => {
         }`
       );
       const result = await response.json();
-      console.log(result);
-      setProducts((prev) => [...prev, ...result.products]); // ✅ Fix: Update state
+      if (result && result.products && result.products.length) {
+        setProducts(result.products);
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   useEffect(() => {
     fetchproducts();
-  }, [count]); // ✅ Fix: Add 'count' so it refetches when updated
+  }, []);
+
+  if (loading) {
+    return <div>loading data! please wait.</div>;
+  }
 
   return (
     <div className="container">
-      {products.map((product) => (
-        <div key={product.id}>{product.title}</div>
-      ))}
-      <button onClick={() => setCount((prev) => prev + 1)} disabled={loading}>
-        {loading ? "Loading..." : "Load More"}
-      </button>
+      <div className="product-conatiner">
+        {products && products.length
+          ? products.map((item) => (
+              <div className="product" key={item.id}>
+                <img src={item.thumbnail} alt={item.title} />
+                <p>{item.title}</p>
+              </div>
+            ))
+          : null}
+      </div>
+      <div className="button-container">
+        <button>load more products</button>
+      </div>
     </div>
   );
 };

@@ -7,45 +7,43 @@ const LoadMore = () => {
   const [count, setCount] = useState(0);
 
   async function fetchproducts() {
+    setLoading(true); // ✅ start loading
     try {
       const response = await fetch(
-        `https://dummyjson.com/products?limit=20&skip=${
-          count === 0 ? 0 : count * 20
-        }`
+        `https://dummyjson.com/products?limit=20&skip=${count * 20}`
       );
       const result = await response.json();
       if (result && result.products && result.products.length) {
-        setProducts(result.products);
-        setLoading(false);
+        setProducts((prev) => [...prev, ...result.products]); // ✅ append new products
       }
     } catch (error) {
       console.log(error);
-      setLoading(false);
     }
+    setLoading(false); // ✅ stop loading (also moved outside try)
   }
 
   useEffect(() => {
     fetchproducts();
-  }, []);
+  }, [count]); // ✅ trigger when count changes
 
-  if (loading) {
+  if (loading && products.length === 0) {
     return <div>loading data! please wait.</div>;
   }
 
   return (
     <div className="container">
-      <div className="product-conatiner">
-        {products && products.length
-          ? products.map((item) => (
-              <div className="product" key={item.id}>
-                <img src={item.thumbnail} alt={item.title} />
-                <p>{item.title}</p>
-              </div>
-            ))
-          : null}
+      <div className="product-container">
+        {products.map((item) => (
+          <div className="product" key={item.id}>
+            <img src={item.thumbnail} alt={item.title} />
+            <p>{item.title}</p>
+          </div>
+        ))}
       </div>
       <div className="button-container">
-        <button>load more products</button>
+        <button onClick={() => setCount((prev) => prev + 1)} disabled={loading}>
+          {loading ? "Loading..." : "load more products"}
+        </button>
       </div>
     </div>
   );

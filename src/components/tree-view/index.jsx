@@ -1,4 +1,5 @@
 import MenuList from "./menu-list";
+import "./style.css";
 
 function TreeView({ menus = [] }) {
   return (

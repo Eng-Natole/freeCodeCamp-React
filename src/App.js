@@ -5,6 +5,7 @@ import LightDark from "./components/light-dark";
 import LoadMore from "./components/Load-more";
 import QrCodeGenrator from "./components/qr-code-generator";
 import RandomColor from "./components/random-color";
+import ScrollIndicator from "./components/scroll-indicator";
 import Star from "./components/star-rating";
 import TreeView from "./components/tree-view";
 import menus from "./components/tree-view/data";
@@ -12,7 +13,7 @@ import menus from "./components/tree-view/data";
 function App() {
   return (
     <div className="App">
-      <LightDark />
+      <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
     </div>
   );
 }

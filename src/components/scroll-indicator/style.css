@@ -1,3 +1,4 @@
 .data-container {
-  color: black;
+  position: absolute;
+  color: #000;
 }

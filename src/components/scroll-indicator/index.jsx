@@ -46,16 +46,21 @@ function ScrollIndicator({ url }) {
 
   return (
     <div>
-      <div className="top-container">
-        <h1>Custom Scroll Indicator</h1>
-        <div className="scroll-progress-tracking-container">
-          <div
-            className="current-progress-bar"
-            style={{ width: `${scrollPercentage}%` }}
-          ></div>
-        </div>
-      </div>
-
+      <h1>Custom Scroll Indicator</h1>
+      {loading && <p>Loading...</p>}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      <div
+        className="scroll-indicator"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: "4px",
+          width: `${scrollPercentage}%`,
+          backgroundColor: " #dc1313",
+          zIndex: 9999,
+        }}
+      />
       <div className="data-container">
         {data && data.length > 0
           ? data.map((dataItem) => <p key={dataItem.id}>{dataItem.title}</p>)

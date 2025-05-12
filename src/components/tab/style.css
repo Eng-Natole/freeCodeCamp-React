@@ -1,3 +1,31 @@
-* {
-  color: black;
+.wrapper {
+  font-family: sans-serif;
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.heading {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.tab-item {
+  padding: 8px 12px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-item:hover {
+  background-color: #f5f5f5;
+}
+
+.active-tab {
+  font-weight: bold;
+  border-bottom: 2px solid blue;
+}
+
+.content {
+  color: whitesmoke;
 }

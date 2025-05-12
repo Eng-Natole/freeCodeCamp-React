@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./style.css";
 
 function Tab({ tabsContent, onChange }) {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);

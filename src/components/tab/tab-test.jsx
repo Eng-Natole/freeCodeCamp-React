@@ -1,4 +1,4 @@
-import Tab from "./index";
+import Tab from "./index"; // make sure path is correct
 
 function RandomComponent() {
   return <h1>some random content</h1>;
@@ -21,7 +21,8 @@ export default function TabTest() {
   ];
 
   function handleChange(currentTabIndex) {
-    console.log(currentTabIndex);
+    console.log("Current tab index:", currentTabIndex);
   }
+
   return <Tab tabsContent={tabs} onChange={handleChange} />;
 }

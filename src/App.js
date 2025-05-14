@@ -1,6 +1,7 @@
 import "./App.css";
 import Accordian from "./components/accordian";
 import ModalTest from "./components/custom-modal-popup/modal-test";
+import GitProfileFinder from "./components/github-profile/gitprofile";
 import ImageSlider from "./components/Image-slider";
 import LightDark from "./components/light-dark";
 import LoadMore from "./components/Load-more";
@@ -17,7 +18,8 @@ function App() {
     <div className="App">
       {/* <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} /> */}
       {/* <TabTest /> */}
-      <ModalTest />
+      {/* <ModalTest /> */}
+      <GitProfileFinder />
     </div>
   );
 }

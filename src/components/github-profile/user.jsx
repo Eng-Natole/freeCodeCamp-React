@@ -1,47 +1,38 @@
-import "./git.css";
-
 export default function UserCard({ user }) {
-  if (!user) return <p>No user data available.</p>;
-
   const {
     avatar_url,
-    followers = 0,
-    following = 0,
-    public_repos = 0,
-    url,
-    name,
+    followers,
+    following,
+    public_repos,
     login,
+    name,
     created_at,
   } = user;
 
   const createdDate = new Date(created_at);
-  const formattedDate = createdDate.toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
 
   return (
-    <section className="user-card">
-      <div className="avatar-section">
-        <img src={avatar_url} alt={`${login}'s avatar`} className="avatar" />
-      </div>
-
-      <div className="info-section">
+    <div className="user-card">
+      <img src={avatar_url} alt="user avatar" className="avatar" />
+      <div className="info">
         <h2>
           <a
             href={`https://github.com/${login}`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
           >
             {name || login}
           </a>
         </h2>
-        <p>User joined on {formattedDate}</p>
-
-        <div className="user-stats">
+        <p className="joined-date">
+          Joined on{" "}
+          {`${createdDate.getDate()} ${createdDate.toLocaleDateString("en-us", {
+            month: "short",
+          })} ${createdDate.getFullYear()}`}
+        </p>
+        <div className="stats">
           <div className="stat">
-            <p>Public Repos</p>
+            <p>Repos</p>
             <p>{public_repos}</p>
           </div>
           <div className="stat">
@@ -54,6 +45,6 @@ export default function UserCard({ user }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -6,43 +6,51 @@ function GitProfileFinder() {
   const [userName, setUserName] = useState("berry-k0");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function fetchGithubUserData() {
     setLoading(true);
-    const res = await fetch(`https:api.github.com/users/${userName}`);
+    setError("");
+    try {
+      const res = await fetch(`https://api.github.com/users/${userName}`);
+      const data = await res.json();
 
-    const data = await res.json();
-    if (data) {
-      setUserData(data);
-      setLoading(false);
-      setUserName("");
+      if (data.message === "Not Found") {
+        setError("User not found");
+        setUserData(null);
+      } else {
+        setUserData(data);
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
     }
+    setLoading(false);
   }
 
-  function handleSubmit() {
-    fetchGithubUserData();
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (userName.trim()) fetchGithubUserData();
   }
 
   useEffect(() => {
     fetchGithubUserData();
   }, []);
 
-  if (loading) {
-    return <h1>Loading data! pleae wait</h1>;
-  }
   return (
     <div className="github-profile-container">
-      <div className="input-wrapper">
+      <form className="input-wrapper" onSubmit={handleSubmit}>
         <input
           type="text"
-          name="search-by-username"
-          placeholder="search github username..."
+          placeholder="Search GitHub username..."
           value={userName}
-          onChange={(event) => setUserName(event.target.value)}
+          onChange={(e) => setUserName(e.target.value)}
         />
-        <button onClick={handleSubmit}>Search</button>
-      </div>
-      {userData !== null ? <UserCard user={userData} /> : null}
+        <button type="submit">Search</button>
+      </form>
+
+      {error && <div className="error">{error}</div>}
+      {loading && <h2 className="loading">Loading data... Please wait.</h2>}
+      {userData && <UserCard user={userData} />}
     </div>
   );
 }

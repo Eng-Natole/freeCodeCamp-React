@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./git.css";
+import UserCard from "./user";
 
 function GitProfileFinder() {
-  const [userName, setUserName] = useState("eng-natole");
+  const [userName, setUserName] = useState("berry-k0");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -14,10 +15,13 @@ function GitProfileFinder() {
     if (data) {
       setUserData(data);
       setLoading(false);
+      setUserName("");
     }
   }
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    fetchGithubUserData();
+  }
 
   useEffect(() => {
     fetchGithubUserData();
@@ -38,6 +42,7 @@ function GitProfileFinder() {
         />
         <button onClick={handleSubmit}>Search</button>
       </div>
+      {userData !== null ? <UserCard user={userData} /> : null}
     </div>
   );
 }

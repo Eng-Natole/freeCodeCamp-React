@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Suggestion from "./suggestion";
+import "./style.css";
 
 function Search() {
   const [loading, setLoading] = useState(false);

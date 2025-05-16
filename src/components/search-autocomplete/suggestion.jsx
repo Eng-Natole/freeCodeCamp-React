@@ -1,3 +1,5 @@
+import "./style.css";
+
 function Suggestion({ data }) {
   return (
     <div>

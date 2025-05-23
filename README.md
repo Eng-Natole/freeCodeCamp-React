@@ -12,7 +12,7 @@ This repository contains the projects I completed as part of the [FreeCodeCamp](
 
 ## Completed Projects
 
-### 1. Project Title - [Link to the live demo if available]
+### 1. Project Title - [Image slider]
 #### Description:
 - Briefly describe what the project is about and its functionality.
 - Technologies used: [list technologies, e.g., HTML, CSS, JavaScript, React, etc.]

@@ -22,7 +22,7 @@ This repository contains the projects I completed as part of the [FreeCodeCamp](
 ### 2. Project Title - [Link to the live demo if available]
 #### Description:
 - Briefly describe the project, what it does, and the key features.
-- Technologies used: [list technologies]
+- Technologies used: []
 
 ---
 
@@ -106,7 +106,7 @@ To get started with any project in this repository:
 
 ---
 
- Contributing
+ ## Contributing
 
 Feel free to open issues or submit pull requests if you have any suggestions or improvements for the projects.
 

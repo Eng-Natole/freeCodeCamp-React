@@ -106,7 +106,7 @@ To get started with any project in this repository:
 
 ---
 
-## Contributing
+ Contributing
 
 Feel free to open issues or submit pull requests if you have any suggestions or improvements for the projects.
 

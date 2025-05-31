@@ -57,14 +57,14 @@ A customizable star rating component where users can rate by clicking on the sta
 
 ### Add Future Projects Here:
 
-### 5. [Project Title]
+### 5. [title]
 #### Description:
 - Briefly describe the project.
 #### Technologies used:
 - List of technologies used
 ---
 
-### 6. [Project Title]
+### 6. [Title]
 #### Description:
 - Briefly describe the project.
 #### Technologies used:

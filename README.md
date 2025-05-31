@@ -112,6 +112,6 @@ Feel free to open issues or submit pull requests if you have any suggestions or 
 
 ---
 
-## License
+License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
